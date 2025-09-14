@@ -18,8 +18,8 @@ class_names = df['Espèce']
 uploaded_file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
 if uploaded_file is not None :
-    img = Image.open(uploaded_file)
-    img_array = np.array(img).resize(256, 256)
+    img = Image.open(uploaded_file).resize(256, 256)
+    img_array = np.array(img)
 
 with st.spinner("Prédiction"):
     pred = model.predict(img_array)
