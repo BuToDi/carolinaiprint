@@ -17,16 +17,12 @@ class_names = df['Espèce']
 
 uploaded_file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
+if uploaded_file is not None :
+    img = Image.open(uploaded_file)
+    img_array = np.array(img)
 
-
-# display image
-if file is not None:
-    image = Image.open(file).convert('RGB')
-    st.image(image, use_column_width=True)
-
-    # classify image
-    class_name, conf_score = classify(image, model, class_names)
-
-    # write classification
-    st.write("## {}".format(class_name))
-    st.write("### score: {}%".format(int(conf_score * 1000) / 10))
+ with st.spinner("Prédiction"):
+        pred = model.predict(img_array)
+        predicted_class = class_names[np.argmax(pred)]
+        animal_info = df[df["Espèce"] == predicted_class]
+        info = animal_info.iloc[0]
