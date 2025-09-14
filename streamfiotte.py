@@ -19,10 +19,9 @@ uploaded_file = st.file_uploader('', type=['jpeg', 'jpg', 'png'])
 
 if uploaded_file is not None :
     img = Image.open(uploaded_file)
-    img_array = np.array(img)
+    img_array = np.array(img).resize(256, 256)
 
 with st.spinner("Prédiction"):
     pred = model.predict(img_array)
     predicted_class = class_names[np.argmax(pred)]
-    animal_info = df[df["Espèce"] == predicted_class]
-    info = animal_info.iloc[0]
+
