@@ -21,7 +21,7 @@ if uploaded_file is not None :
     img = Image.open(uploaded_file).resize(256, 256)
     img_array = np.array(img)
 
-with st.spinner("Prédiction"):
-    pred = model.predict(img_array)
-    predicted_class = class_names[np.argmax(pred)]
+    with st.spinner("Prédiction"):
+        pred = model.predict(img_array)
+        predicted_class = class_names[np.argmax(pred)]
 
