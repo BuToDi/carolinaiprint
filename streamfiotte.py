@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 from keras.models import load_model
 from PIL import Image
-import numpy as 
+import numpy as np
 import tensorflow as tf
 
 
